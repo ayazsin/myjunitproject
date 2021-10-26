@@ -1,0 +1,16 @@
+=======DAY04========
+-Implicit wait: driver.manage().timeouts().implicitlyWait(30,TimeUnit.SECONDS)
+    -Dynamic wait.
+    -It is enough to use this only once in the class.
+-xpath:
+    -xpath is used to locate elements
+    -Multible ways to write an xpath
+    -//tag[@attr='value']
+    -//*[.='Hello World'] => This will returns all of the Hello World text elements in the page
+-Dynamic element: The value of the attribute can change when refreshing or when we go to the page
+                  later again. For example when I create user account, then some elements
+                  id value changes.
+-How do you handle dynamic elements?
+    -By writing dynamic xpath such as contains, start-with, ends-with.
+
+

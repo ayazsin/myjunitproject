@@ -1,0 +1,101 @@
+===DAY03========
+<a class="nav-item nav-link" data-test="addresses" href="/addresses">Addresses</a>
+
+This element is a link. because is has a tag.
+We CAN USE
+5. linkText
+
+6. partialLinkText
+
+7. xpath
+***There are 2 types of xpath
+1. Absolute
+2. Relative
+
+Note: We should not use absolute for locating elements
+
+***Locate the elements using relative xpath
+
+<input type="email" class="form-control" placeholder="Email" data-test="email" name="session[email]" id="session_email">
+
+//tag[@ANYattribute='Value of that attribute'];
+
+Tag: input
+Attribute: type, classs,....
+Value : email, form-control,...
+
+XPATH FOR THIS ELEMENT. USE ANY OF THEM
+//input[@type='email']
+//input[@class='form-control']
+//input[@placeholder='Email']
+//input[@data-test='email']
+//input[@name='session[email]']
+//input[@id='session_email']
+
+When xpath return multiple elements, we can use index to get unique element
+For example, //input[@class='form-control'] return email and password elements
+
+(//input[@class='form-control'])[1] --->>> returns the email that is in the first index
+(//input[@class='form-control'])[2] --->>> returns the password that is in the second index
+
+NOTE: If there are multiple match, findElement will give the first element by default.
+
+*****Which locator do you prefer to use?
+-I prefer to use id.
+*****Why?
+-Because id is unique.
+*****What if id is not unique?
+-Well, id normally should be unique. Dev may assign not unique id by mistake. In that case, I can use other locators such as name.
+
+1.id
+2.name
+3.I don't use className, cause they are not usually unique
+4.If there is no unique identifier such as id or name, then I write DYNAMIC RELATIVE XPATH
+
+I am good at writing dynamic xpath for the elements. I can write xpath for any elements on the page.
+Even though xpath is a little slower, it is safer to use.
+
+    -findElement(By.Locator('value')) -> returns single element. (When multible match, returns the first
+     the first element). Returns WebElement, If there is no match, than throws nosuchelementexception
+    -findElements(By.Locator('value')) -> returns multible elements. Return type is List<WebElement>,
+     if there is no match, returns empty List. Doesn't throw exception.
+    -Xpath: There are 2 xpath - absolute and relative
+        *Absolute xpath: Navigating from the first parent to the targeted element 1 by 1.
+         /is used.
+        *Relative xpath: Navigating the elements using relative path.
+         No need to go from parent to child 1 by 1. // is used.
+        *//tag[@attribute='value of that attribute']
+        *There are multible ways to write xpath
+
+        Absolute -> /html/body/section[8]/div/div[1]/div/h2
+
+        Relative -> (//h2)[10]
+        Cmd+f -> for finding elements
+
+        -//tagname[.='text name']
+            -(//h2)[7]
+            -//h2[.='Welcome To Our Hotel'] for locating the text specific. This is used to locate
+             the texts with specific tag.
+        -//*[.='text name'] for any tag
+            -//*[.='Welcome To Our Hotel']
+        -//*[contains(text(),'piece of text')]
+            -//*[contains(text(),'Welcome To Our Ho')]
+        -//tag[contains(@attribute,'value')]
+            -this is used to locate especially DYNAMIC ELEMENTS.
+             Dynamic element -> The element’s id, class, ..can change when
+                                the page refreshes. Especially, if there is number
+                                In the attribute value, then the number can change
+                                This is less likely but can happen
+            -we use TAG, ATTRIBUTE, VALUE of that ATTRIBUTE.
+            -We can use this xpath to locate any element
+            -//input[contains(@class,'form-control checkin_date')]
+            -//input[contains(@id,’u_2_b_P7')] OR (//input[contains(@id,'u_')])[1]
+            -(//input[starts-with(@id,’u_')])[1] => Returns the first input whose id starts with u_
+            -//input[ends-with(@id,’P7’)] => Returns the input elements who ends with P7
+            -(//*[starts-with(@id,’u_’)])[1] => returns any tag whose id starts with u_
+            -//*[contains(@id,’u_’)] returns ANY tag whose ID CONTAINS u_. THIS IS THE MOST GENERIC XPATH FOR
+             LOCATING DYNAMIC ELEMENTS
+
+
+
+
