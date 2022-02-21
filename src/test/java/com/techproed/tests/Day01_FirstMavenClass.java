@@ -14,6 +14,13 @@ public class Day01_FirstMavenClass {
         //2. Create driver
         WebDriver driver = new ChromeDriver();
 
+        //3. Write your automation script
+        driver.manage().window().maximize();
+        driver.get("https://www.amazon.com");
+        driver.close();
+
+
+
 
 
     }
